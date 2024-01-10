@@ -1,0 +1,56 @@
+﻿PROJECT 1 : IRIS DATASET
+
+
+Project Objectives: 
+- Utilize the Iris dataset to perform a data science task. 
+- Conduct a Simple Exploratory Data Analysis (EDA) to gain insights into the dataset.
+
+
+Steps I followed for this Project : 
+
+
+Step 0 : Importing  the required libraries.
+        As we know that for analyzing a given dataset using python we will be using its main libraries named pandas, numpy, seaborn, matplotlib,etc.
+Each library has its unique impact on data analysis.
+Pandas - This library is for importing and reading the csv file. Pandas is the most used python library for data analysis.
+Numpy - Numpy does all the mathematical simulations required while doing data analysis.
+Seaborn and Matplotlib - These libraries help by plotting plots of different features and relations.
+
+
+
+
+Step 1 : Exploratory Data Analysis.
+        After importing the required libraries, first I imported the csv file using the pandas read_csv function. 
+        Then I used dataframe attributes like columns, info(), describe(),etc to understand the structure and characteristics of the Iris Dataset.
+        Here I had started with checking null values, then used the head() attribute to check the top 5 data points present in the dataset.
+        Thereafter some mathematics came into the picture, exploring different measures of each feature respectively.
+        After this, I used Feature Selection and dropped the column “Id” by making another dataset, so that the original dataset is safe and unchanged. Using this new dataset and plotting libraries, respective plots were made. The Heatmap showed the correlation between its features and gave us their relation between them. Along with this plot I had also plotted other plots like box plot, histogram where each plot has its own style us telling the story.
+
+
+
+
+Step 2 : Splitting the data into training and testing sets.
+Following all the data analysis, in the dataset df1(mentioned in the notebook) I had replaced the Species name into numbers[0,1,2] for better doability. Then I have split the dataset into two parts : training set and testing set using train_test_split function with assigning stratify = y, where y is the dataset containing only the “Species” column so that both sets will have equal distribution of Species.
+
+
+Step 3 : Building and Evaluating the Models.
+        After checking the training and testing sets, now it's time to build the model.
+
+
+Here, our main motto is to classify the Species based on its available features. Also we must perform MultiClass Classification since we are dealing with three different species. So I’m starting with the Logistic Regression model because it is a simple and efficient algorithm for classification problems. It is used for predicting the categorical dependent values using independent features. In this model there are different solvers available. From that set of solvers I had chosen 3 solvers: liblinear, lbfgs(default solver) and newton-cg. Each has its unique features like liblinear solver performs better when the dataset is of smaller size, newton-cg solver handles multiclass classification well.
+        For this LR model the evaluation metrics that I am using are accuracy, jaccard score and f1 score. Accuracy score directly compares the number of correctly matched pairs and then gives its score, whereas f1 score is the harmonic mean of precision and recall, jaccard score defined as the size of intersection of both y_test and predict sets to size of union of both sets. All of these range from 0 to 1, while 0 indicates sets are completely different and 1 indicates that both sets are identical.
+
+
+        Next, we will be training a K Nearest Neighbors Classifier model for our data. In this we have to set a parameter n_neighbors, where this parameter determines how many data points are to be considered while making a prediction. In general it was said to keep the n_neighbors value equal to the square root of the number of data points. So here I ran a for loop for testing with different n_neighbors and also found the accuracy score of each value respectively. As said above, I got a 100% accuracy score in case of K Nearest Neighbors when n_neighbors was 13.
+
+
+I am using the State Vector Machine (SVM) as my third model since SVM is a powerful classification and aims to find a hyperplane to separate different classes. In this model kernels play a vital role by transforming the input data into higher dimensional space and then according to the kernel it creates the hyperplane to separate different classes. I had used three kernels : linear, polynomial with degree 2 and rbf. Each of these kernels has its uniqueness.
+        Linear kernel performs well on smaller datasets and performs extremely well if the relationship in the data is linear. Polynomial kernel will be helpful if there is any complex relationship present in the data, also setting the degree parameter is also important in this case. Here I found that 2nd degree polynomial worked well by giving the highest accuracy than other degrees. Radial Basis Function(rbf) is most used because it works well on smaller datasets and also it has the ability to handle complex relationships present in the data.
+
+
+
+
+
+
+Here I had used three different models because each has its own effectiveness and this depends on many factors. All three models has achieved an accuracy score of 1.
+If I need to apply one machine learning model I’ll be using Logistic Regression model because of its more interpretability and good accuracy.  I feel KNN and SVM are less interpretable because in KNN each prediction depends on other data points and in SVM the predictions are based on a hyperplane.
